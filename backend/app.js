@@ -26,13 +26,13 @@ const options = {
   credentials: true,
 };
 
-app.use(function(req, res, next) {
-  const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
-    res.header('*', origin);
-  next();
-});
+// app.use(function(req, res, next) {
+//   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
+//     res.header('*', origin);
+//   next();
+// });
 
-// app.use('*', cors(options));
+app.use('*', cors(options));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
