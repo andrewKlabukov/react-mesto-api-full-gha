@@ -80,7 +80,7 @@ function createUser(req, res, next) {
     // })
     .then((user) => {
       const {
-        name, about, avatar, email
+        name, about, avatar, email,
       } = user;
       res.status(200).send({
         name, about, avatar, email,
