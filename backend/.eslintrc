@@ -12,7 +12,7 @@
     "no-shadow": [
       "error",
       {
-          "hoist": "all"
+          "hoist": "off"
       }
   ]
   }
