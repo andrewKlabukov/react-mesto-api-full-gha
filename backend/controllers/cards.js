@@ -54,6 +54,7 @@ function deleteCard(req, res, next) {
         next(new Forbidden('Нельзя удалить эту карточку'));
         return;
       }
+      // eslint-disable-next-line consistent-return
       return card
         .remove()
         .then(() => {
