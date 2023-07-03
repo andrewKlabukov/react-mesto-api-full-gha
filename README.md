@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 158.160.40.165
 
-Frontend https://...
+Frontend https://andreyklabukov.students.nomoreparties.sbs;
 
-Backend https://...
+Backend https://api.andreykla.students.nomoreparties.sbs
