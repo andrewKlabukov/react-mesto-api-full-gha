@@ -8,12 +8,6 @@
           "_id"
         ]
       }
-    ],
-    "no-shadow": [
-      "error",
-      {
-          "hoist": "off"
-      }
-  ]
+    ]
   }
 }

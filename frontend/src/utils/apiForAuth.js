@@ -1,8 +1,7 @@
-//const BASE_URL = `${window.location.protocol}//${process.env.REACT_APP_API_URL || '//localhost:3001'}`;
-const BASE_URL = `http://api.AndreyKla.students.nomoreparties.sbs`;
+const BASE_URL = `https://api.andreykla.students.nomoreparties.sbs`;
 
 function checkResponse(res) {
-  return res.ok ? res.json() : Promise.reject(`Ошибка: ${res}`);
+  return res.ok ? res.json() : Promise.reject(res);
 }
 
 export const register = (data) => {

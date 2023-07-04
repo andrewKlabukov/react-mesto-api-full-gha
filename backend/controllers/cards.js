@@ -54,14 +54,13 @@ function deleteCard(req, res, next) {
         next(new Forbidden('Нельзя удалить эту карточку'));
         return;
       }
-      // eslint-disable-next-line consistent-return
       return card
         .remove()
         .then(() => {
           res
             .status(200)
             .send({ message: 'Карточка успешно удалена' });
-        });
+        })
     })
     .catch((err) => {
       if (err.name === 'CastError') {
