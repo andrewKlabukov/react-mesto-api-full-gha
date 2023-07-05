@@ -13,20 +13,13 @@ const { isAuthorized } = require('./middlewares/isAuthorized');
 const { regExpURL } = require('./constants/constants');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFound = require('./errors/Error404');
-const { main } = require('./controllers/nodemailer');
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 const app = express();
 const { PORT = 3001 } = process.env;
-const options = {
-  origin: [
-    'http://localhost:3000',
-    'https://lechkarpov.students.nomoredomains.xyz',
-    'http://lechkarpov.students.nomoredomains.xyz',
-  ],
-  credentials: true,
-};
-app.use('*', cors(options));
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://example.com']
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -34,8 +27,6 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use(requestLogger);
-
-app.post('/sender', main)
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({

@@ -119,7 +119,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://api.andreykla.students.nomoreparties.sbs',
+  baseUrl: `https://api.andreykla.students.nomoreparties.sbs`,
   headers: {
     authorization: 'af74f13f-cd15-4606-af66-aedf471dfe51',
     'Content-Type': 'application/json'
