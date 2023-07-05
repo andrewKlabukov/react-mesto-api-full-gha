@@ -60,7 +60,7 @@ function deleteCard(req, res, next) {
           res
             .status(200)
             .send({ message: 'Карточка успешно удалена' });
-        })
+        });
     })
     .catch((err) => {
       if (err.name === 'CastError') {
