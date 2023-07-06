@@ -25,8 +25,10 @@ function createCard(req, res, next) {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new Badreq('Некорректные данные'));
+        return;
       } else {
         next(new InternalServer('Что-то пошло не так'));
+        return;
       }
     });
 }
@@ -40,6 +42,7 @@ function getCards(req, res, next) {
     })
     .catch(() => {
       next(new InternalServer('Что-то пошло не так'));
+      return;
     });
 }
 
@@ -60,13 +63,15 @@ function deleteCard(req, res, next) {
           res
             .status(200)
             .send({ message: 'Карточка успешно удалена' });
-        });
+        })
     })
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new Badreq('Некорректные данные'));
+        return;
       } else {
         next(new InternalServer('Что-то пошло не так'));
+        return;
       }
     });
 }
@@ -91,6 +96,7 @@ function postlikeCard(req, res, next) {
         next(new Badreq('Некорректные данные'));
       } else {
         next(new InternalServer('Что-то пошло не так'));
+        return;
       }
     });
 }
@@ -113,8 +119,10 @@ function deletelikeCard(req, res, next) {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new Badreq('Некорректные данные'));
+        return;
       } else {
         next(new InternalServer('Что-то пошло не так'));
+        return;
       }
     });
 }
