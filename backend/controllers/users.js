@@ -26,7 +26,6 @@ function getUserProfile(req, res, next) {
         next(new Badreq('Некорректные данные.'));
       } else {
         next(err);
-        return;
       }
     });
 }
@@ -81,8 +80,12 @@ function createUser(req, res, next) {
     //   res.status(201).send(user);
     // })
     .then((user) => {
-      const {name, about, avatar, email} = user;
-      res.status(200).send({name, about, avatar, email})
+      const {
+        name, about, avatar, email,
+      } = user;
+      res.status(200).send({
+        name, about, avatar, email,
+      });
     })
     .catch((err) => {
       if (err.code === ERROR_DUPLICATE) {
