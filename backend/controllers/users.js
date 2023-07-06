@@ -81,6 +81,7 @@ function createUser(req, res, next) {
     // })
     .then((user) => {
       const {
+        // eslint-disable-next-line no-shadow
         name, about, avatar, email,
       } = user;
       res.status(200).send({
