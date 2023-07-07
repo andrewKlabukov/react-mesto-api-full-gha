@@ -14,19 +14,33 @@ const { regExpURL } = require('./constants/constants');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFound = require('./errors/Error404');
 
-mongoose.connect('mongodb://localhost:27017/mestodb');
+mongoose.connect('mongodb://158.160.48.229:27017/');
 const app = express();
 const { PORT = 3001 } = process.env;
-app.use(cors({
-  origin: ['http://localhost:3000', 'http://example.com'],
-}));
+const options = {
+  origin: [
+    'http://localhost:3000',
+    'https://andreyklabukov.students.nomoreparties.sbs',
+    'http://andreyklabukov.students.nomoreparties.sbs',
+    'https://AndreyKlabukov.students.nomoreparties.sbs',
+    'http://AndreyKlabukov.students.nomoreparties.sbs',
+  ],
+  credentials: true,
+};
+app.use('*', cors(options));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(express.json());
-
+console.log(process.env.NODE_ENV);
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
@@ -61,6 +75,7 @@ app.post('/signup', celebrate({
       .required(),
   }),
 }), createUser);
+
 
 app.use('/users', isAuthorized, usersRoutes);
 app.use('/cards', isAuthorized, cardsRoutes);
