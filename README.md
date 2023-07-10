@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.40.165
+IP-адрес 158.160.48.229
 
 Frontend https://andreyklabukov.students.nomoreparties.sbs;
 
