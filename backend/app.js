@@ -38,7 +38,8 @@ app.use(requestLogger);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
+    // eslint-disable-next-line no-undef
+    next(new Error('Сервер сейчас упадёт'));
   }, 0);
 });
 
