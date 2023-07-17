@@ -13,7 +13,6 @@ const { isAuthorized } = require('./middlewares/isAuthorized');
 const { regExpURL } = require('./constants/constants');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFound = require('./errors/Error404');
-const ServerError = require('./errors/Error500');
 
 mongoose.connect('mongodb://158.160.48.229:27017/');
 const app = express();
@@ -37,10 +36,9 @@ app.use(express.json());
 console.log(process.env.NODE_ENV);
 app.use(requestLogger);
 
-app.get('/crash-test', () => {
+app.get('/crash-test', (req, res, next) => {
   setTimeout(() => {
-    // eslint-disable-next-line no-undef
-    next(new ServerError('Сервер сейчас упадёт'));
+    next(new Error('Сервер сейчас упадёт'));
   }, 0);
 });
 
